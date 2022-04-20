@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+   <head>
+      <meta charset="utf-8">
+      <meta name="robots" content="noindex, nofollow">
+      <title>Form</title>
+      <meta name="viewport" content="width=device-width, initial-scale=1">
+      <link href="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" rel="stylesheet">
+      <!-- <link href="css/style.css" rel="stylesheet" id="bootstrap-css"> -->
+      <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+      <script src="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js"></script>
+   </head>
+   <body>
+      <div class="container my-2 shadow-sm p-3 mb-5 bg-white rounded border border-primary">
+         <div class="">
+            <h4 class="mb-4">Enter your details</h4>
+      <form method="POST" name="users">         
+         <div class="form-group">
+           <label for="exampleInputPassword1">Name</label>
+           <input type="text" class="form-control" id="exampleInputPassword1" placeholder="Your Name..." name="Name">
+         </div>
+
+         <div class="form-group">
+           <label for="exampleInputEmail1">Email address</label>
+           <input type="email" class="form-control" id="exampleInputEmail1" placeholder="Enter Your Email" name="Email">
+         </div>
+         <button type="submit" class="btn btn-primary">Submit</button>
+       </form>
+      </div>
+      </div>
+
+      <div class="container shadow-sm p-3 mb-5 bg-white rounded border border-success">
+         
+         <main class="">
+            <h4>Submitted Details</h4>
+           <!-- Table -->
+           <table class="table table-striped">
+             <thead id="table-head"></thead>
+             <tbody id="table-body"></tbody>
+           </table>
+           <!-- Table -->
+       </main>
+      </div>
+
+     
+
+	  <script>
+      const scriptURL = 'https://script.google.com/macros/s/AKfycbwG6B_v5JJym7G-hWCvc1v6Zeo59d45CWFvowBCpg8Ed6L-A9-H9Sg07d9E8XCPCJer/exec'
+      const form = document.forms['users']
+
+   form.addEventListener('submit', e => {
+    e.preventDefault()
+    fetch(scriptURL, { method: 'POST', body: new FormData(form)})
+      .then(response => msg())
+      .catch(error => console.error('Error!', error.message))
+      function msg(){
+         if(alert('submitted!')){
+         }
+         else  window.location.reload();
+         // 
+      }
+  })
+   </script>
+     <!-- MDB ESSENTIAL -->
+  <script type="text/javascript" src="js/data.js"></script>
+  <!-- Google API -->
+  <script src="https://apis.google.com/js/api.js"></script>
+  <!-- easyData -->
+  <script type="text/javascript" src="js/easyData-google-sheets.js"></script>
+   </body>
+</html>
